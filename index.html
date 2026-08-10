@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zymomax Biotech — Fermentation Science. Aquatic Solutions.</title>
+  <meta name="description" content="Zymomax Biotech provides expert fermentation consultancy, scale-up services, and manufactures premium probiotic feed for aquatic animals. Located at ACE-TBI, Hosur.">
+  <meta name="keywords" content="fermentation consultancy, probiotic shrimp feed, aquaculture probiotics, fermentation scale-up, Hosur biotech, ACE-TBI startup">
+  <meta property="og:title" content="Zymomax Biotech — Fermentation Science. Aquatic Solutions.">
+  <meta property="og:description" content="Premium probiotic aquafeed & fermentation consultancy from India's leading aquatic biotech startup.">
+  <link rel="icon" href="images/logo.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.jpg" alt="Zymomax Logo">
+    <div class="nav-logo-text">
+      <span class="brand">ZYMOMAX</span>
+      <span class="tagline">Fermentation Science. Aquatic Solutions.</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="careers.html">Careers</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="cart.html" class="nav-cart-btn" id="nav-cart-btn" title="Cart">
+      🛒
+      <span class="cart-badge" id="cart-badge"></span>
+    </a>
+    <a href="login.html" class="btn btn-nav" id="nav-login-btn">Login</a>
+    <a href="account.html" class="btn btn-nav" id="nav-account-btn" style="display:none">👤 Account</a>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <canvas id="particles-canvas" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
+
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge animate-fadeup">
+        <span class="dot"></span>
+        India's First Aqua-Probiotic Research Startup
+      </div>
+      <h1 class="hero-title animate-fadeup">
+        Revolutionizing<br>
+        <span class="highlight">Aquaculture</span><br>
+        Through Fermentation
+      </h1>
+      <p class="hero-sub animate-fadeup">
+        Zymomax Biotech combines cutting-edge fermentation science with aquaculture expertise to deliver premium probiotic feed and expert consultancy — empowering shrimp farmers across India.
+      </p>
+      <div class="hero-actions animate-fadeup">
+        <a href="products.html" class="btn btn-primary btn-lg">Explore Products →</a>
+        <a href="contact.html" class="btn btn-secondary btn-lg">Get Consultancy</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num" data-count="40" id="hero-c1">0</div>
+          <div class="stat-label">% Mortality Reduction</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" id="hero-c2">10<sup>9</sup></div>
+          <div class="stat-label">CFU/g Probiotic Count</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-count="3" id="hero-c3">0</div>
+          <div class="stat-label">Product Lines</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" id="hero-c4">ACE<br><small style="font-size:0.6rem">TBI</small></div>
+          <div class="stat-label">Incubated Startup</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card-wrapper animate-float">
+        <div class="hero-img-card">
+          <img src="images/hero.jpg" alt="Zymomax Fermentation Lab">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,22,40,0.6) 0%,transparent 60%);"></div>
+          <div style="position:absolute;bottom:20px;left:20px;right:20px;color:white;">
+            <div style="font-size:0.8rem;color:var(--teal);font-weight:600;margin-bottom:4px;">📍 DETI@ACE-TBI, Hosur</div>
+            <div style="font-size:0.95rem;font-weight:700;">State-of-the-Art Fermentation Facility</div>
+          </div>
+        </div>
+        <div class="hero-float-badge">
+          <div class="icon">🦐</div>
+          <div class="info">
+            <div class="label">Flagship Product</div>
+            <div class="val">ZymoShrimp Pro™</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS STRIP ============ -->
+<div class="stats-strip">
+  <div class="stats-grid">
+    <div class="reveal">
+      <div class="counter-num" data-count="5">0</div>
+      <div class="counter-label">Probiotic Strains per Formulation</div>
+    </div>
+    <div class="reveal">
+      <div class="counter-num" data-count="40">0</div>
+      <div class="counter-label">% Shrimp Mortality Reduction</div>
+    </div>
+    <div class="reveal">
+      <div class="counter-num" data-count="18">0</div>
+      <div class="counter-label">Months Shelf Life</div>
+    </div>
+    <div class="reveal">
+      <div class="counter-num" data-count="100">0</div>
+      <div class="counter-label">% Research-Backed</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ WHY ZYMOMAX ============ -->
+<section id="why-us" class="section">
+  <div class="section-header">
+    <div class="section-tag reveal">Why Choose Us</div>
+    <h2 class="section-title reveal">What Sets Us Apart</h2>
+    <p class="section-desc reveal">We're not just another aquafeed supplier — we're scientists who understand your pond as well as you do.</p>
+  </div>
+  <div class="why-grid">
+
+    <div class="card reveal">
+      <div class="card-icon">🔬</div>
+      <h3 class="card-title">Research-First Approach</h3>
+      <p class="card-desc">Every product is born in the lab, not on a marketing board. Our formulations are validated through rigorous in-vitro and in-vivo trials before reaching your pond.</p>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-icon">🏛️</div>
+      <h3 class="card-title">ACE-TBI Incubated</h3>
+      <p class="card-desc">Backed by DETI@ACE-TBI, Adhiyamaan College of Engineering — giving us access to world-class infrastructure, mentors, and a strong R&D foundation unlike commercial competitors.</p>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-icon">🧬</div>
+      <h3 class="card-title">End-to-End Expertise</h3>
+      <p class="card-desc">From strain isolation to industrial scale-up, we handle the complete fermentation pipeline — something most consultancies and feed companies operate separately.</p>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-icon">🌊</div>
+      <h3 class="card-title">Aquaculture-Specialized</h3>
+      <p class="card-desc">We focus exclusively on aquatic probiotics — shrimp, fish, and other aquatic species. This laser focus means deeper expertise than generalist competitors.</p>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-icon">💰</div>
+      <h3 class="card-title">India-Optimized & Affordable</h3>
+      <p class="card-desc">Formulated for Indian pond conditions, water chemistry, and local pathogen profiles. Premium quality at prices accessible to small and medium aquaculture farmers.</p>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-icon">🤝</div>
+      <h3 class="card-title">Farmer-First Service</h3>
+      <p class="card-desc">We don't disappear after the sale. Our team provides on-ground support, protocol guidance, and continuous monitoring to ensure your farming success.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ FEATURED PRODUCTS ============ -->
+<section class="section-alt" id="featured-products">
+  <div class="section" style="padding-top:96px;padding-bottom:96px;">
+    <div class="section-header">
+      <div class="section-tag reveal">Our Products</div>
+      <h2 class="section-title reveal">Engineered for Aquatic Excellence</h2>
+      <p class="section-desc reveal">Premium probiotic feeds and expert services designed to maximize your aquaculture yield.</p>
+    </div>
+    <div class="products-grid" id="featured-products-grid"></div>
+    <div style="text-align:center;margin-top:40px;" class="reveal">
+      <a href="products.html" class="btn btn-primary btn-lg">View All Products & Services →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section" id="how-it-works">
+  <div class="section-header">
+    <div class="section-tag reveal">Our Process</div>
+    <h2 class="section-title reveal">Science to Your Shrimp Pond</h2>
+    <p class="section-desc reveal">A transparent, proven journey from research to results.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;position:relative;">
+    <div class="card reveal" style="text-align:center;">
+      <div style="font-size:2.5rem;margin-bottom:16px;">🔬</div>
+      <div style="font-size:0.75rem;font-weight:700;color:var(--teal);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">Step 01</div>
+      <h3 class="card-title" style="margin-bottom:8px;">Strain Research</h3>
+      <p class="card-desc">Isolation and characterization of high-performance probiotic strains from diverse environmental sources.</p>
+    </div>
+    <div class="card reveal" style="text-align:center;">
+      <div style="font-size:2.5rem;margin-bottom:16px;">⚗️</div>
+      <div style="font-size:0.75rem;font-weight:700;color:var(--teal);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">Step 02</div>
+      <h3 class="card-title" style="margin-bottom:8px;">Formulation</h3>
+      <p class="card-desc">Multi-strain optimization, efficacy testing, and formulation design tailored to target species.</p>
+    </div>
+    <div class="card reveal" style="text-align:center;">
+      <div style="font-size:2.5rem;margin-bottom:16px;">🏭</div>
+      <div style="font-size:0.75rem;font-weight:700;color:var(--teal);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">Step 03</div>
+      <h3 class="card-title" style="margin-bottom:8px;">Scale-Up & Manufacturing</h3>
+      <p class="card-desc">Controlled fermentation, downstream processing, and quality-assured manufacturing at our ACE-TBI facility.</p>
+    </div>
+    <div class="card reveal" style="text-align:center;">
+      <div style="font-size:2.5rem;margin-bottom:16px;">🚀</div>
+      <div style="font-size:0.75rem;font-weight:700;color:var(--teal);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">Step 04</div>
+      <h3 class="card-title" style="margin-bottom:8px;">Farm-Level Results</h3>
+      <p class="card-desc">Delivered to your pond with full protocol support, monitoring, and measurable yield improvements.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section-alt" id="testimonials">
+  <div class="section" style="padding-top:96px;padding-bottom:96px;">
+    <div class="section-header">
+      <div class="section-tag reveal">Testimonials</div>
+      <h2 class="section-title reveal">Trusted by Aquaculture Farmers</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"After switching to ZymoShrimp Pro™, our FCR improved from 1.8 to 1.4 and mortality dropped significantly. The Zymomax team was always available for on-site guidance."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">👨‍🌾</div>
+          <div>
+            <div class="author-name">Ravi Kumar S.</div>
+            <div class="author-loc">Shrimp Farmer, Nagapattinam</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"The fermentation consultancy from Zymomax helped us optimize our biogas plant operation. Their scientific depth and hands-on approach is unmatched in the region."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">👨‍💼</div>
+          <div>
+            <div class="author-name">Arun Krishnamurthy</div>
+            <div class="author-loc">Director, AgroTech Solutions, Coimbatore</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"AquaBio Boost™ transformed our pond water quality. We've completely eliminated the ammonia problem that plagued us for years. Highly recommend!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">🧑‍🌾</div>
+          <div>
+            <div class="author-name">Meena Devi R.</div>
+            <div class="author-loc">Aquaculture Farmer, Nellore, AP</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BANNER ============ -->
+<section class="section">
+  <div style="background:linear-gradient(135deg,rgba(0,201,177,0.12) 0%,rgba(79,172,222,0.12) 100%);border:1px solid rgba(0,201,177,0.25);border-radius:var(--radius-xl);padding:64px 48px;text-align:center;" class="reveal">
+    <div class="section-tag" style="margin-bottom:20px;">Ready to Grow?</div>
+    <h2 style="font-family:var(--font-head);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:900;letter-spacing:-0.02em;margin-bottom:16px;">Start Your Fermentation Journey Today</h2>
+    <p style="color:var(--muted);font-size:1.05rem;max-width:520px;margin:0 auto 36px;line-height:1.7;">Whether you're a shrimp farmer looking for better results or a company needing fermentation expertise — we have a solution for you.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="products.html" class="btn btn-primary btn-lg">Order Now</a>
+      <a href="contact.html" class="btn btn-secondary btn-lg">Book Consultancy</a>
+    </div>
+    <p style="font-size:0.82rem;color:var(--muted);margin-top:24px;">📍 DETI@ACE-TBI, Adhiyamaan College of Engineering, Dr MGR Nagar, Hosur – 635 109</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo">
+        <img src="images/logo.jpg" alt="Zymomax" style="height:44px;border-radius:8px;">
+        <div class="nav-logo-text">
+          <span class="brand">ZYMOMAX</span>
+          <span class="tagline">Fermentation Science. Aquatic Solutions.</span>
+        </div>
+      </div>
+      <p>India's pioneering aquatic probiotic biotech startup, incubated at DETI@ACE-TBI, Hosur. Delivering science-backed solutions for sustainable aquaculture.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn" title="LinkedIn">in</a>
+        <a href="#" class="social-btn" title="Twitter">𝕏</a>
+        <a href="#" class="social-btn" title="Instagram">📸</a>
+        <a href="#" class="social-btn" title="YouTube">▶</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="about.html">About Us</a>
+      <a href="products.html">Products</a>
+      <a href="careers.html">Careers</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a href="products.html#aquafeed">ZymoShrimp Pro™</a>
+      <a href="products.html#aquafeed">AquaBio Boost™</a>
+      <a href="products.html#aquafeed">ZymoFry™ Starter</a>
+      <a href="products.html#consultancy">Consultancy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:info@zymomax.com">info@zymomax.com</a>
+      <a href="mailto:orders@zymomax.com">orders@zymomax.com</a>
+      <a href="mailto:careers@zymomax.com">careers@zymomax.com</a>
+      <a href="about.html#location">Find Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Zymomax Biotech. All rights reserved.</span>
+    <span>Made with 🔬 at <a href="about.html">ACE-TBI, Hosur</a></span>
+  </div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/emailjs-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+<script>
+// Render featured products (first 3)
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.getElementById('featured-products-grid');
+  if (!grid || !window.PRODUCTS) return;
+  const featured = PRODUCTS.slice(0, 3);
+  grid.innerHTML = featured.map(p => `
+    <div class="product-card reveal">
+      <img src="${p.image}" alt="${p.name}" class="product-img">
+      <div class="product-body">
+        <span class="product-badge">${p.badge}</span>
+        <h3 class="product-name">${p.name}</h3>
+        <p class="product-desc">${p.desc}</p>
+        <div class="product-footer">
+          <div class="product-price">${formatINR(p.price)}<span> ${p.priceUnit}</span></div>
+          <button class="btn btn-primary btn-sm" onclick="addToCart(PRODUCTS.find(x=>x.id==='${p.id}'))">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  initScrollReveal();
+});
+// Counter on hero
+document.addEventListener('DOMContentLoaded', () => {
+  const c1 = document.getElementById('hero-c1');
+  if (c1) animateCounter(c1, 40, 2500);
+  const c3 = document.getElementById('hero-c3');
+  if (c3) animateCounter(c3, 3, 1800);
+});
+</script>
+</body>
+</html>

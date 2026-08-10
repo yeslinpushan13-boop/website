@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products & Services — Zymomax Biotech</title>
+  <meta name="description" content="Shop premium probiotic aquaculture feeds and book fermentation consultancy services from Zymomax Biotech.">
+  <link rel="icon" href="images/logo.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .filter-bar { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px; }
+    .filter-btn { padding:9px 20px; border-radius:100px; font-size:0.85rem; font-weight:600; background:var(--glass-bg); border:1.5px solid var(--glass-border); color:var(--muted); cursor:pointer; transition:var(--transition); }
+    .filter-btn:hover,.filter-btn.active { background:var(--teal-glow); border-color:var(--teal); color:var(--teal); }
+    .product-specs { margin:16px 0; }
+    .product-specs li { font-size:0.82rem; color:var(--muted); padding:4px 0; border-bottom:1px solid var(--glass-border); display:flex; gap:8px; align-items:center; }
+    .product-specs li::before { content:'✓'; color:var(--teal); font-weight:700; }
+    .product-detail-modal .modal-img { width:100%; height:220px; object-fit:cover; border-radius:var(--radius); margin-bottom:20px; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.jpg" alt="Zymomax Logo">
+    <div class="nav-logo-text"><span class="brand">ZYMOMAX</span><span class="tagline">Fermentation Science. Aquatic Solutions.</span></div>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="products.html" class="active">Products</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="careers.html">Careers</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="cart.html" class="nav-cart-btn" title="Cart">🛒<span class="cart-badge" id="cart-badge"></span></a>
+    <a href="login.html" class="btn btn-nav" id="nav-login-btn">Login</a>
+    <a href="account.html" class="btn btn-nav" id="nav-account-btn" style="display:none">👤 Account</a>
+  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="page-header-overlay"></div>
+  <div class="page-header-content">
+    <div class="page-header-tag">Our Catalogue</div>
+    <h1 class="page-header-title">Products & Services</h1>
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span>Products</span></div>
+  </div>
+</div>
+
+<!-- PRODUCTS SECTION -->
+<section class="section" id="products-section">
+  <div class="section-header">
+    <div class="section-tag reveal">Catalogue</div>
+    <h2 class="section-title reveal">Aquaculture Solutions Built on Science</h2>
+    <p class="section-desc reveal">Filter by category or browse our full range of probiotic feeds and expert services.</p>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar reveal" id="filter-bar">
+    <button class="filter-btn active" data-filter="all">All Products</button>
+    <button class="filter-btn" data-filter="aquafeed">🦐 Aqua Feed</button>
+    <button class="filter-btn" data-filter="supplement">🧪 Supplements</button>
+    <button class="filter-btn" data-filter="consultancy">🤝 Consultancy</button>
+  </div>
+
+  <!-- Products Grid -->
+  <div class="products-grid" id="products-grid"></div>
+</section>
+
+<!-- CUSTOM ORDERS BANNER -->
+<section class="section-alt" id="bulk-orders">
+  <div class="section" style="padding-top:80px;padding-bottom:80px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+      <div class="reveal">
+        <div class="section-tag" style="text-align:left;display:inline-block;">Bulk & Custom Orders</div>
+        <h2 class="section-title" style="text-align:left;margin-bottom:16px;">Need Larger Quantities?</h2>
+        <p style="color:var(--muted);line-height:1.8;margin-bottom:24px;">We offer competitive bulk pricing for distributors, large farms, and institutional buyers. Custom formulations, private labeling, and flexible payment terms available for qualifying customers.</p>
+        <ul style="margin-bottom:28px;display:flex;flex-direction:column;gap:12px;">
+          <li style="display:flex;gap:12px;align-items:center;font-size:0.92rem;"><span style="color:var(--teal);font-size:1.1rem;">✓</span> Minimum order: 50 kg feed / 10 kg supplements</li>
+          <li style="display:flex;gap:12px;align-items:center;font-size:0.92rem;"><span style="color:var(--teal);font-size:1.1rem;">✓</span> Pan-India shipping via express logistics</li>
+          <li style="display:flex;gap:12px;align-items:center;font-size:0.92rem;"><span style="color:var(--teal);font-size:1.1rem;">✓</span> Custom probiotic formulations available</li>
+          <li style="display:flex;gap:12px;align-items:center;font-size:0.92rem;"><span style="color:var(--teal);font-size:1.1rem;">✓</span> Private label / white label options</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary">Request Bulk Quote →</a>
+      </div>
+      <div class="reveal">
+        <div class="card">
+          <h3 style="font-family:var(--font-head);font-size:1.1rem;font-weight:700;margin-bottom:20px;">📦 Shipping Info</h3>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <span style="font-size:1.2rem;">🚛</span>
+              <div><div style="font-weight:600;font-size:0.9rem;margin-bottom:2px;">Standard Delivery</div><div style="font-size:0.82rem;color:var(--muted);">3–5 business days across Tamil Nadu & Karnataka</div></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <span style="font-size:1.2rem;">✈️</span>
+              <div><div style="font-weight:600;font-size:0.9rem;margin-bottom:2px;">Pan-India Express</div><div style="font-size:0.82rem;color:var(--muted);">5–7 days to AP, Odisha, Gujarat, Kerala & other states</div></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <span style="font-size:1.2rem;">🆓</span>
+              <div><div style="font-weight:600;font-size:0.9rem;margin-bottom:2px;">Free Shipping</div><div style="font-size:0.82rem;color:var(--muted);">On orders above ₹5,000</div></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <span style="font-size:1.2rem;">🌡️</span>
+              <div><div style="font-weight:600;font-size:0.9rem;margin-bottom:2px;">Cold Chain Available</div><div style="font-size:0.82rem;color:var(--muted);">Temperature-controlled shipping on request</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT DETAIL MODAL -->
+<div class="modal-overlay" id="product-modal">
+  <div class="modal product-detail-modal" style="max-width:600px;">
+    <button class="modal-close" onclick="closeModal('product-modal')">✕</button>
+    <img src="" alt="" id="modal-img" class="modal-img">
+    <div id="modal-badge" class="badge-teal" style="margin-bottom:12px;"></div>
+    <h2 class="modal-title" id="modal-name"></h2>
+    <p id="modal-desc" style="color:var(--muted);font-size:0.93rem;line-height:1.7;margin-bottom:16px;"></p>
+    <h4 style="font-size:0.88rem;font-weight:700;color:var(--off-white);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.06em;">Specifications</h4>
+    <ul class="product-specs" id="modal-specs"></ul>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:24px;padding-top:20px;border-top:1px solid var(--glass-border);">
+      <div id="modal-price" style="font-family:var(--font-head);font-size:1.4rem;font-weight:800;color:var(--teal);"></div>
+      <button class="btn btn-primary" id="modal-add-btn">Add to Cart 🛒</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo"><img src="images/logo.jpg" alt="Zymomax" style="height:44px;border-radius:8px;"><div class="nav-logo-text"><span class="brand">ZYMOMAX</span><span class="tagline">Fermentation Science. Aquatic Solutions.</span></div></div>
+      <p>India's pioneering aquatic probiotic biotech startup, incubated at DETI@ACE-TBI, Hosur.</p>
+      <div class="footer-social"><a href="#" class="social-btn">in</a><a href="#" class="social-btn">𝕏</a><a href="#" class="social-btn">📸</a></div>
+    </div>
+    <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="products.html">Products</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><h4>Products</h4><a href="#aquafeed">ZymoShrimp Pro™</a><a href="#aquafeed">AquaBio Boost™</a><a href="#aquafeed">ZymoFry™ Starter</a><a href="#consultancy">Consultancy</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="mailto:info@zymomax.com">info@zymomax.com</a><a href="mailto:orders@zymomax.com">orders@zymomax.com</a><a href="mailto:careers@zymomax.com">careers@zymomax.com</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2024 Zymomax Biotech. All rights reserved.</span><span>Made with 🔬 at ACE-TBI, Hosur</span></div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/emailjs-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+<script>
+let currentFilter = 'all';
+let currentProduct = null;
+
+function renderProducts(filter) {
+  const grid = document.getElementById('products-grid');
+  const filtered = filter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.tag === filter);
+  grid.innerHTML = filtered.map(p => `
+    <div class="product-card reveal" data-tag="${p.tag}">
+      <img src="${p.image}" alt="${p.name}" class="product-img">
+      <div class="product-body">
+        <span class="product-badge">${p.badge}</span>
+        <h3 class="product-name">${p.name}</h3>
+        <p class="product-desc">${p.desc}</p>
+        <ul class="product-specs">
+          ${p.specs.slice(0,3).map(s => `<li>${s}</li>`).join('')}
+        </ul>
+        <div class="product-footer" style="margin-top:16px;">
+          <div class="product-price">${formatINR(p.price)}<span> ${p.priceUnit}</span></div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-ghost btn-sm" onclick="openProductModal('${p.id}')">Details</button>
+            <button class="btn btn-primary btn-sm" onclick="addToCart(PRODUCTS.find(x=>x.id==='${p.id}'))">Add 🛒</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  initScrollReveal();
+}
+
+function openProductModal(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  currentProduct = p;
+  document.getElementById('modal-img').src = p.image;
+  document.getElementById('modal-img').alt = p.name;
+  document.getElementById('modal-badge').textContent = p.badge + ' • ' + p.category;
+  document.getElementById('modal-name').textContent = p.name;
+  document.getElementById('modal-desc').textContent = p.fullDesc;
+  document.getElementById('modal-specs').innerHTML = p.specs.map(s => `<li>${s}</li>`).join('');
+  document.getElementById('modal-price').innerHTML = formatINR(p.price) + `<span style="font-size:0.85rem;font-weight:400;color:var(--muted);margin-left:4px;">${p.priceUnit}</span>`;
+  document.getElementById('modal-add-btn').onclick = () => { addToCart(p); closeModal('product-modal'); };
+  openModal('product-modal');
+}
+window.openProductModal = openProductModal;
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderProducts('all');
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      renderProducts(currentFilter);
+    });
+  });
+  // Check URL hash for filter
+  if (window.location.hash === '#consultancy') {
+    document.querySelector('[data-filter="consultancy"]')?.click();
+  }
+});
+</script>
+</body>
+</html>

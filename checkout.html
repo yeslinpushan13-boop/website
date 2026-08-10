@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — Zymomax Biotech</title>
+  <meta name="description" content="Complete your Zymomax order securely.">
+  <link rel="icon" href="images/logo.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Razorpay SDK -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <style>
+    .payment-method { display:flex; flex-direction:column; gap:12px; margin-bottom:24px; }
+    .payment-option { display:flex; align-items:center; gap:12px; padding:16px; border-radius:10px; background:var(--glass-bg); border:1.5px solid var(--glass-border); cursor:pointer; transition:var(--transition); }
+    .payment-option:hover { border-color:var(--teal); background:var(--teal-glow); }
+    .payment-option.selected { border-color:var(--teal); background:rgba(0,201,177,0.1); }
+    .payment-option input[type=radio] { accent-color:var(--teal); width:18px; height:18px; }
+    .payment-option label { cursor:pointer; font-weight:600; font-size:0.92rem; }
+    .payment-option .pay-sub { font-size:0.8rem; color:var(--muted); }
+    #success-screen { display:none; text-align:center; padding:60px 20px; }
+    #success-screen .success-icon { font-size:5rem; margin-bottom:20px; }
+    #checkout-form-area { display:block; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.jpg" alt="Zymomax Logo">
+    <div class="nav-logo-text"><span class="brand">ZYMOMAX</span><span class="tagline">Fermentation Science. Aquatic Solutions.</span></div>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="cart.html" class="nav-cart-btn" title="Cart">🛒<span class="cart-badge" id="cart-badge"></span></a>
+    <a href="login.html" class="btn btn-nav" id="nav-login-btn">Login</a>
+    <a href="account.html" class="btn btn-nav" id="nav-account-btn" style="display:none">👤 Account</a>
+  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="page-header-overlay"></div>
+  <div class="page-header-content">
+    <div class="page-header-tag">Secure Checkout</div>
+    <h1 class="page-header-title">Complete Your Order</h1>
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><a href="cart.html">Cart</a><span class="sep">›</span><span>Checkout</span></div>
+  </div>
+</div>
+
+<section class="section page-main">
+
+  <!-- Progress Steps -->
+  <div class="checkout-steps" style="margin-bottom:48px;">
+    <div class="step done">
+      <div class="step-circle">✓</div>
+      <div class="step-label">Cart</div>
+    </div>
+    <div class="step-line done"></div>
+    <div class="step active">
+      <div class="step-circle">2</div>
+      <div class="step-label">Details & Payment</div>
+    </div>
+    <div class="step-line"></div>
+    <div class="step">
+      <div class="step-circle">3</div>
+      <div class="step-label">Confirmation</div>
+    </div>
+  </div>
+
+  <!-- Success Screen -->
+  <div id="success-screen">
+    <div class="success-icon">🎉</div>
+    <h2 style="font-family:var(--font-head);font-size:2rem;font-weight:900;margin-bottom:12px;">Order Placed Successfully!</h2>
+    <p style="color:var(--muted);font-size:1.05rem;margin-bottom:8px;">Your order <strong id="success-order-id" style="color:var(--teal);"></strong> has been confirmed.</p>
+    <p style="color:var(--muted);font-size:0.92rem;margin-bottom:32px;">A confirmation has been sent to your email. Our team at <strong style="color:var(--off-white);">orders@zymomax.com</strong> will process your order within 24 hours.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="account.html" class="btn btn-primary">View My Orders</a>
+      <a href="products.html" class="btn btn-secondary">Continue Shopping</a>
+    </div>
+  </div>
+
+  <!-- Checkout Form -->
+  <div id="checkout-form-area">
+    <div class="checkout-grid">
+      <!-- Left: Details Form -->
+      <div>
+        <!-- Shipping Details -->
+        <div class="card" style="margin-bottom:24px;">
+          <h3 style="font-family:var(--font-head);font-size:1.1rem;font-weight:700;margin-bottom:20px;">📋 Shipping Details</h3>
+          <form id="checkout-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="co-fname">First Name <span>*</span></label>
+                <input class="form-input" id="co-fname" type="text" placeholder="Ravi" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="co-lname">Last Name <span>*</span></label>
+                <input class="form-input" id="co-lname" type="text" placeholder="Kumar" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="co-email">Email Address <span>*</span></label>
+              <input class="form-input" id="co-email" type="email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="co-phone">Phone Number <span>*</span></label>
+              <input class="form-input" id="co-phone" type="tel" placeholder="+91 98765 43210" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="co-address">Full Address <span>*</span></label>
+              <textarea class="form-textarea" id="co-address" placeholder="House/Door No, Street, Area..." rows="3" required></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="co-city">City <span>*</span></label>
+                <input class="form-input" id="co-city" type="text" placeholder="Nagapattinam" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="co-state">State <span>*</span></label>
+                <select class="form-select" id="co-state" required>
+                  <option value="">Select State</option>
+                  <option>Tamil Nadu</option><option>Andhra Pradesh</option><option>Karnataka</option>
+                  <option>Kerala</option><option>Telangana</option><option>Odisha</option>
+                  <option>Gujarat</option><option>Maharashtra</option><option>West Bengal</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="co-pincode">PIN Code <span>*</span></label>
+                <input class="form-input" id="co-pincode" type="text" placeholder="600001" maxlength="6" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="co-gst">GST Number (optional)</label>
+                <input class="form-input" id="co-gst" type="text" placeholder="22AAAAA0000A1Z5">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="co-notes">Order Notes (optional)</label>
+              <textarea class="form-textarea" id="co-notes" placeholder="Special instructions, delivery preferences..." rows="2"></textarea>
+            </div>
+          </form>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="card">
+          <h3 style="font-family:var(--font-head);font-size:1.1rem;font-weight:700;margin-bottom:20px;">💳 Payment Method</h3>
+          <div class="payment-method" id="payment-methods">
+            <div class="payment-option selected" onclick="selectPayment(this,'razorpay')">
+              <input type="radio" name="pay" id="pay-razorpay" value="razorpay" checked>
+              <label for="pay-razorpay" style="display:flex;flex-direction:column;">
+                <span>💳 Online Payment (Razorpay)</span>
+                <span class="pay-sub">UPI, Cards, Net Banking, Wallets — Secured by Razorpay</span>
+              </label>
+            </div>
+            <div class="payment-option" onclick="selectPayment(this,'cod')">
+              <input type="radio" name="pay" id="pay-cod" value="cod">
+              <label for="pay-cod" style="display:flex;flex-direction:column;">
+                <span>💵 Cash on Delivery</span>
+                <span class="pay-sub">Pay when you receive your order (₹50 COD fee applies)</span>
+              </label>
+            </div>
+            <div class="payment-option" onclick="selectPayment(this,'neft')">
+              <input type="radio" name="pay" id="pay-neft" value="neft">
+              <label for="pay-neft" style="display:flex;flex-direction:column;">
+                <span>🏦 Bank Transfer (NEFT/RTGS)</span>
+                <span class="pay-sub">For bulk orders — our team will share bank details via email</span>
+              </label>
+            </div>
+          </div>
+          <div style="font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:8px;">
+            <span>🔒</span> All transactions are SSL-encrypted and secure.
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Order Review -->
+      <div class="sticky-top">
+        <div class="order-summary">
+          <h3 class="order-summary-title">Order Review</h3>
+          <div id="checkout-items" style="margin-bottom:16px;"></div>
+          <div class="divider"></div>
+          <div class="summary-row"><span>Subtotal</span><span id="co-subtotal">—</span></div>
+          <div class="summary-row"><span>GST (18%)</span><span id="co-gst-val">—</span></div>
+          <div class="summary-row"><span>Shipping</span><span id="co-shipping">—</span></div>
+          <div class="summary-row total"><span>Total</span><span class="price" id="co-total">—</span></div>
+          <div class="divider"></div>
+          <button class="btn btn-primary btn-full btn-lg" id="place-order-btn" onclick="handlePlaceOrder()">
+            Place Order & Pay →
+          </button>
+          <p style="font-size:0.78rem;color:var(--muted);text-align:center;margin-top:12px;">By placing an order, you agree to our Terms of Service and Refund Policy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="margin-top:60px;">
+  <div class="footer-bottom" style="max-width:1200px;margin:0 auto;padding:24px 5%;justify-content:center;border-top:1px solid var(--glass-border);">
+    <span>© 2024 Zymomax Biotech &nbsp;|&nbsp; <a href="mailto:orders@zymomax.com" style="color:var(--teal);">orders@zymomax.com</a> &nbsp;|&nbsp; 🔒 Secure Checkout</span>
+  </div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/emailjs-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+<script>
+let selectedPayment = 'razorpay';
+
+function selectPayment(el, type) {
+  document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  el.querySelector('input[type=radio]').checked = true;
+  selectedPayment = type;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cart = getCart();
+  if (cart.length === 0) { window.location.href = 'cart.html'; return; }
+  const totals = getCartTotals();
+
+  // Render items
+  document.getElementById('checkout-items').innerHTML = cart.map(i => `
+    <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--glass-border);">
+      <img src="${i.image}" style="width:52px;height:52px;object-fit:cover;border-radius:8px;">
+      <div style="flex:1;">
+        <div style="font-size:0.88rem;font-weight:600;">${i.name}</div>
+        <div style="font-size:0.8rem;color:var(--muted);">Qty: ${i.qty}</div>
+      </div>
+      <div style="font-weight:700;font-size:0.92rem;">${formatINR(i.price * i.qty)}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('co-subtotal').textContent = formatINR(totals.subtotal);
+  document.getElementById('co-gst-val').textContent = formatINR(totals.gst);
+  document.getElementById('co-shipping').textContent = totals.shipping === 0 ? 'FREE' : formatINR(totals.shipping);
+  document.getElementById('co-total').textContent = formatINR(totals.total);
+
+  // Pre-fill from session
+  const session = getSession();
+  if (session) {
+    const nameParts = session.name.split(' ');
+    document.getElementById('co-fname').value = nameParts[0] || '';
+    document.getElementById('co-lname').value = nameParts.slice(1).join(' ') || '';
+    document.getElementById('co-email').value = session.email || '';
+    document.getElementById('co-phone').value = session.phone || '';
+  }
+});
+
+function getFormData() {
+  const fname = document.getElementById('co-fname').value.trim();
+  const lname = document.getElementById('co-lname').value.trim();
+  const email = document.getElementById('co-email').value.trim();
+  const phone = document.getElementById('co-phone').value.trim();
+  const address = document.getElementById('co-address').value.trim();
+  const city = document.getElementById('co-city').value.trim();
+  const state = document.getElementById('co-state').value;
+  const pincode = document.getElementById('co-pincode').value.trim();
+  const notes = document.getElementById('co-notes').value.trim();
+  if (!fname || !lname || !email || !phone || !address || !city || !state || !pincode) return null;
+  return { name: fname + ' ' + lname, email, phone, address: `${address}, ${city}, ${state} - ${pincode}`, notes };
+}
+
+async function handlePlaceOrder() {
+  const formData = getFormData();
+  if (!formData) { showToast('Please fill all required fields.', 'error'); return; }
+
+  const cart = getCart();
+  const totals = getCartTotals();
+  const orderId = 'ZYM-' + Date.now().toString(36).toUpperCase();
+
+  if (selectedPayment === 'razorpay') {
+    // Razorpay integration
+    const options = {
+      key: 'rzp_test_PLACEHOLDER', // Replace with your Razorpay Key ID
+      amount: totals.total * 100, // Amount in paise
+      currency: 'INR',
+      name: 'Zymomax Biotech',
+      description: `Order ${orderId}`,
+      image: 'images/logo.jpg',
+      prefill: { name: formData.name, email: formData.email, contact: formData.phone },
+      theme: { color: '#00c9b1' },
+      handler: async function(response) {
+        await completeOrder(orderId, formData, cart, totals, 'Razorpay — ' + response.razorpay_payment_id);
+      },
+      modal: { ondismiss: function() { showToast('Payment cancelled.', 'info'); } }
+    };
+    try {
+      const rzp = new Razorpay(options);
+      rzp.open();
+    } catch(e) {
+      // If Razorpay key not configured, demo mode
+      showToast('Payment gateway not configured. Proceeding in demo mode.', 'info');
+      await completeOrder(orderId, formData, cart, totals, 'Demo Mode');
+    }
+  } else {
+    // COD or NEFT — direct order
+    await completeOrder(orderId, formData, cart, totals, selectedPayment === 'cod' ? 'Cash on Delivery' : 'Bank Transfer');
+  }
+}
+
+async function completeOrder(orderId, customer, cart, totals, paymentMode) {
+  const btn = document.getElementById('place-order-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Processing...';
+
+  const order = {
+    id: orderId,
+    items: cart,
+    customer,
+    totals,
+    paymentMode,
+    date: new Date().toISOString(),
+    status: 'Confirmed'
+  };
+
+  // Save to user account
+  saveOrderToUser(order);
+
+  // Send email notification
+  await sendOrderEmail(order);
+
+  // Clear cart
+  clearCart();
+
+  // Show success
+  document.getElementById('checkout-form-area').style.display = 'none';
+  document.getElementById('success-screen').style.display = 'block';
+  document.getElementById('success-order-id').textContent = orderId;
+
+  // Update steps
+  document.querySelectorAll('.step').forEach((s, i) => {
+    if (i < 2) { s.classList.remove('active'); s.classList.add('done'); s.querySelector('.step-circle').textContent = '✓'; }
+    if (i === 2) { s.classList.add('active'); }
+  });
+  document.querySelectorAll('.step-line').forEach(l => l.classList.add('done'));
+
+  showToast('Order placed! Confirmation sent to ' + customer.email, 'success', 5000);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

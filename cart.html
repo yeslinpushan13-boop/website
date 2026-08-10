@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart — Zymomax Biotech</title>
+  <meta name="description" content="Review your Zymomax cart and proceed to checkout.">
+  <link rel="icon" href="images/logo.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.jpg" alt="Zymomax Logo">
+    <div class="nav-logo-text"><span class="brand">ZYMOMAX</span><span class="tagline">Fermentation Science. Aquatic Solutions.</span></div>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="careers.html">Careers</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="cart.html" class="nav-cart-btn" title="Cart">🛒<span class="cart-badge show" id="cart-badge"></span></a>
+    <a href="login.html" class="btn btn-nav" id="nav-login-btn">Login</a>
+    <a href="account.html" class="btn btn-nav" id="nav-account-btn" style="display:none">👤 Account</a>
+  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="page-header-overlay"></div>
+  <div class="page-header-content">
+    <div class="page-header-tag">Shopping</div>
+    <h1 class="page-header-title">Your Cart</h1>
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><a href="products.html">Products</a><span class="sep">›</span><span>Cart</span></div>
+  </div>
+</div>
+
+<section class="section page-main">
+
+  <!-- Empty State -->
+  <div id="cart-empty" style="display:none;" class="empty-state">
+    <div class="empty-icon">🛒</div>
+    <h3>Your Cart is Empty</h3>
+    <p>Browse our products and add items to your cart.</p>
+    <a href="products.html" class="btn btn-primary mt-24">Shop Now →</a>
+  </div>
+
+  <!-- Cart Main -->
+  <div id="cart-main">
+    <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:32px;align-items:start;">
+      <!-- Cart Items -->
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+          <h2 style="font-family:var(--font-head);font-size:1.2rem;font-weight:700;">Cart Items <span id="summary-items" style="color:var(--muted);font-weight:400;font-size:0.9rem;"></span></h2>
+          <button class="btn btn-ghost btn-sm" onclick="if(confirm('Clear all items?')){clearCart();renderCart();}">Clear All</button>
+        </div>
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th style="text-align:left;">Product</th>
+              <th>Price</th>
+              <th>Qty</th>
+              <th>Total</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="cart-items"></tbody>
+        </table>
+        <div style="margin-top:20px;">
+          <a href="products.html" class="btn btn-ghost btn-sm">← Continue Shopping</a>
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="sticky-top">
+        <div class="order-summary">
+          <h3 class="order-summary-title">Order Summary</h3>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="summary-subtotal">—</span>
+          </div>
+          <div class="summary-row">
+            <span>GST (18%)</span>
+            <span id="summary-gst">—</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span id="summary-shipping">—</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span class="price" id="summary-total">—</span>
+          </div>
+          <div class="divider"></div>
+          <p style="font-size:0.8rem;color:var(--muted);margin-bottom:16px;">🚀 Free shipping on orders above ₹5,000</p>
+          <a href="checkout.html" class="btn btn-primary btn-full btn-lg">Proceed to Checkout →</a>
+          <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;font-size:0.78rem;color:var(--muted);">
+            <span>🔒</span> Secure & Encrypted Checkout
+          </div>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="card" style="margin-top:16px;padding:20px;">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="display:flex;gap:10px;align-items:center;font-size:0.85rem;"><span>✅</span> <span>100% Quality Guaranteed</span></div>
+            <div style="display:flex;gap:10px;align-items:center;font-size:0.85rem;"><span>🔬</span> <span>Research-Validated Products</span></div>
+            <div style="display:flex;gap:10px;align-items:center;font-size:0.85rem;"><span>📦</span> <span>Secure Packaging & Cold Chain</span></div>
+            <div style="display:flex;gap:10px;align-items:center;font-size:0.85rem;"><span>↩️</span> <span>Easy Returns & Support</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo"><img src="images/logo.jpg" alt="Zymomax" style="height:44px;border-radius:8px;"><div class="nav-logo-text"><span class="brand">ZYMOMAX</span><span class="tagline">Fermentation Science. Aquatic Solutions.</span></div></div>
+      <p>India's pioneering aquatic probiotic biotech startup, incubated at DETI@ACE-TBI, Hosur.</p>
+    </div>
+    <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="products.html">Products</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="mailto:info@zymomax.com">info@zymomax.com</a><a href="mailto:orders@zymomax.com">orders@zymomax.com</a></div>
+    <div class="footer-col"><h4>Legal</h4><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Refund Policy</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2024 Zymomax Biotech. All rights reserved.</span><span>🔒 Secure Shopping</span></div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/emailjs-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
